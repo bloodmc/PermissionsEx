@@ -33,7 +33,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -76,8 +75,7 @@ public class SqlDaoTest extends PermissionsExTest {
     @Before
     @Override
     public void setUp() throws IOException, PEBKACException, PermissionsLoadingException, ObjectMappingException {
-        File testDir = tempFolder.newFolder();
-        jdbcUrl = jdbcUrl.replaceAll("\\{base\\}", testDir.getCanonicalPath());
+        jdbcUrl = "jdbc:h2:~/test";
         sqlStore.setConnectionUrl(jdbcUrl);
         sqlStore.setPrefix("pextest" + COUNTER.getAndIncrement());
         super.setUp();

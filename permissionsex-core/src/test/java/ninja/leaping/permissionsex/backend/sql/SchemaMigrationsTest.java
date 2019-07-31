@@ -30,7 +30,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -78,9 +77,8 @@ public class SchemaMigrationsTest extends PermissionsExTest {
     @Before
     @Override
     public void setUp() throws IOException, PEBKACException, PermissionsLoadingException, ObjectMappingException {
-        File testDir = tempFolder.newFolder();
-        jdbcUrl = jdbcUrl.replaceAll("\\{base\\}", testDir.getCanonicalPath());
-        sqlStore.setConnectionUrl(jdbcUrl);
+        this.jdbcUrl = "jdbc:h2:~/test";
+        sqlStore.setConnectionUrl(this.jdbcUrl);
         sqlStore.setPrefix("pextest" + COUNTER.getAndIncrement());
         sqlStore.setAutoInitialize(false);
         super.setUp();
