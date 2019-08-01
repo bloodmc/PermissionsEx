@@ -16,10 +16,9 @@
  */
 package ninja.leaping.permissionsex.backend.sql;
 
-import com.google.common.collect.Maps;
-
 import java.util.Map;
 import java.util.Objects;
+import java.util.StringJoiner;
 
 public class SubjectRef implements Map.Entry<String, String> {
     private volatile int id;
@@ -127,10 +126,10 @@ public class SubjectRef implements Map.Entry<String, String> {
 
     @Override
     public String toString() {
-        return com.google.common.base.Objects.toStringHelper(this)
-                .add("id", id)
-                .add("type", type)
-                .add("identifier", identifier)
+        return new StringJoiner(", ", this.getClass().getSimpleName() + "[", "]")
+                .add("id=" + id)
+                .add("type=" + type)
+                .add("identifier=" + identifier)
                 .toString();
     }
 }

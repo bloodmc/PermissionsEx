@@ -3,6 +3,9 @@
 /.settings
 /target
 permissionsex-*/target
+permissionsex-*/.classpath
+permissionsex-*/.project
+permissionsex-*/.settings
 /build.xml
 /build
 /bin
